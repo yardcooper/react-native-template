@@ -10,7 +10,7 @@
 
 ## :star: extended/customized Features
 
-- extended EsLint & Prettier Configuration
+- extended ESLint & Prettier Configuration
 - tbd.
 
 ## :arrow_forward: Usage
