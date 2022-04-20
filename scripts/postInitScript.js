@@ -1,8 +1,8 @@
 #!/usr/bin/env ts-node
-import ora from 'ora';
 
-const exec = util.promisify(require('child_process').exec);
+const ora = require('ora');
 const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 const spinner = ora('Fastlane setup');
 
