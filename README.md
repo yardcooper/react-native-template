@@ -1,22 +1,21 @@
 # :space_invader: React Native Template TypeScript | Customized
 
-> An extended Template based on the [clean and minimalist React Native template](https://github.com/react-native-community/react-native-template-typescript).
+> An extended Template based on the [clean and minimalist React Native TypeScript Template](https://github.com/react-native-community/react-native-template-typescript).
 
 ## :star: Base Features
 
 - Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
 - Consistent with the default React Native template
-- Minimal additional dependencies
 
-## :star: extended/customized Features
+## :speech_balloon: Extended Features
 
-- extended ESLint & Prettier Configuration
-- tbd.
+- Extended ESLint & Prettier configurations
+- Platform Gemfiles for Fastlane
 
 ## :arrow_forward: Usage
 
 ```sh
-npx react-native init MyApp --template https://gitlab.com/hybridheroes/opensource/react-native-template
+npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
 
 ## :warning: React Native CLI
