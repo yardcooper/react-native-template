@@ -5,6 +5,8 @@ const { execSync, spawnSync } = require("child_process");
 
 const spinner = ora('Fastlane setup');
 
+console.log('Commencing post-init script')
+
 new Promise((resolve) => {
   spinner.start();
   execSync('cd ios && bundle install');
