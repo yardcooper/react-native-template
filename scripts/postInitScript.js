@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const ora = require('ora');
-const { execSync, spawnSync } = require("child_process");
+const { execSync } = require("child_process");
 
 const spinner = ora('Fastlane setup');
 
