@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
 const ora = require('ora');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const { execSync, spawnSync } = require("child_process");
 
 const spinner = ora('Fastlane setup');
 
 new Promise((resolve) => {
   spinner.start();
-  await exec('cd ios && bundle install');
+  execSync('cd ios && bundle install');
   resolve();
 }).then(() => {
   spinner.succeed();
