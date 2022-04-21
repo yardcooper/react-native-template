@@ -1,5 +1,5 @@
 {
-  "name": "react-native-template",
+  "name": "forked-react-native-template",
   "version": "0.0.1",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "scripts": {
@@ -7,7 +7,8 @@
   },
   "files": [
     "template",
-    "template.config.js"
+    "template.config.js",
+    "script.js"
   ],
   "repository": {
     "type": "git",
