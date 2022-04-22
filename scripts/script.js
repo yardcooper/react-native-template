@@ -1,3 +1,7 @@
 #!/usr/bin/env node
 
-console.log("This is post init script");
+const { execSync, spawnSync } = require("child_process");
+
+// initialise empty git repo for Husky to work
+const projectPath = process.cwd();
+execSync(`git init "${projectPath}"`);
