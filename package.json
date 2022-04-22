@@ -10,7 +10,6 @@
     "template.config.js",
     "script.js"
   ],
-  "repository": "@cjhines/react-native-template",
   "keywords": [
     "react-native",
     "typescript",
