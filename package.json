@@ -1,11 +1,10 @@
 {
-  "name": "@cjhines/react-native-template",
-  "version": "0.0.1",
+  "name": "react-native-template",
+  "version": "1.0.0",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "scripts": {
     "test": "exit 0"
   },
-  "main": "script.js",
   "files": [
     "template",
     "template.config.js",
@@ -19,9 +18,5 @@
     "template",
     "boilerplate"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/cjhines/react-native-template/issues"
-  },
-  "homepage": "https://gitlab.com/cjhines/react-native-template/#readme"
+  "license": "MIT"
 }
