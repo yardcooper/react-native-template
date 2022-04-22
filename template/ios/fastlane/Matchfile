@@ -1,4 +1,4 @@
-git_url("git@gitlab.com:hybridheroes/match.git")
+git_url("")
 git_branch("")
 
 storage_mode("git")
