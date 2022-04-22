@@ -11,10 +11,7 @@
     "template.config.js",
     "script.js"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/cjhines/react-native-template.git"
-  },
+  "repository": "@cjhines/react-native-template",
   "keywords": [
     "react-native",
     "typescript",
@@ -22,7 +19,6 @@
     "template",
     "boilerplate"
   ],
-  "author": "Emin Khateeb <emin@emin.ch>",
   "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/cjhines/react-native-template/issues"
