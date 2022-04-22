@@ -1,5 +1,5 @@
 {
-  "name": "react-native-template-typescript",
+  "name": "react-native-template",
   "version": "0.0.1",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "scripts": {
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emin93/react-native-template-typescript.git"
+    "url": "git+https://gitlab.com/hybridheroes/opensource/react-native-template.git"
   },
   "keywords": [
     "react-native",
@@ -23,7 +23,7 @@
   "author": "Emin Khateeb <emin@emin.ch>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/emin93/react-native-template-typescript/issues"
+    "url": "https://gitlab.com/hybridheroes/opensource/react-native-template/issues"
   },
-  "homepage": "https://github.com/emin93/react-native-template-typescript#readme"
+  "homepage": "https://gitlab.com/hybridheroes/opensource/react-native-template/-/blob/main/README.md"
 }
