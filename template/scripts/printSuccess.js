@@ -1,4 +1,4 @@
-const ora = require("ora");
+import ora from 'ora';
 
 module.exports = {
   async success() {
