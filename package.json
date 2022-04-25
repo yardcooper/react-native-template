@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "license": "MIT",
+  "main": "postInitScript.js",
   "files": [
     "template",
     "template.config.js",
