@@ -1,10 +1,23 @@
 #!/usr/bin/env node
 
+const ora = require("ora");
 const { execSync } = require("child_process");
 
-// Install Fastlane iOS
-const projectPath = process.cwd();
-execSync(`cd "${projectPath}/ios"`);
+const spinner = ora("Executing post init script ");
 execSync(`bundle install`);
 
-console.log('Script complete')
+new Promise((resolve) => {
+  spinner.start();
+  const projectPath = process.cwd();
+  console.log(`Project created at ${projectPath}`);
+  resolve();
+})
+  .then(() => {
+    spinner.succeed();
+  })
+  .catch(() => {
+    spinner.fail();
+    throw new Error(
+      "Something went wrong during the post init script execution"
+    );
+  });
