@@ -15,7 +15,7 @@
     "template",
     "boilerplate"
   ],
-  "devDependencies": {
+  "dependencies": {
     "ora": "^6.1.0"
   }
 }
