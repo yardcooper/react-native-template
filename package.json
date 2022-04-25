@@ -1,7 +1,8 @@
 {
   "name": "react-native-template-script",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
+  "license": "MIT",
   "files": [
     "template",
     "template.config.js",
@@ -14,10 +15,5 @@
     "template",
     "boilerplate"
   ],
-  "author": "Hybrid Heroes",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/hybridheroes/opensource/react-native-template/issues"
-  },
-  "homepage": "https://gitlab.com/hybridheroes/opensource/react-native-template/-/blob/main/README.md"
+  "author": "Hybrid Heroes"
 }
