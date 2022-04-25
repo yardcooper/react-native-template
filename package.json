@@ -2,11 +2,13 @@
   "name": "react-native-template",
   "version": "1.0.0",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
-  "license": "MIT",
+  "scripts": {
+    "test": "exit 0"
+  },
   "files": [
     "template",
     "template.config.js",
-    "postInitScript.js"
+    "script.js"
   ],
   "keywords": [
     "react-native",
@@ -14,5 +16,6 @@
     "jest",
     "template",
     "boilerplate"
-  ]
+  ],
+  "license": "MIT"
 }
