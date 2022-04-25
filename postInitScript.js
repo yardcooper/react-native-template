@@ -1,3 +1,4 @@
 #!/usr/bin/env node
+const { success } = require("./scripts/printSuccess");
 
-console.log(`\nPost init script complete!`)
+success();
