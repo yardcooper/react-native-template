@@ -6,10 +6,6 @@
     "template",
     "template.config.js"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/hybridheroes/opensource/react-native-template.git"
-  },
   "keywords": [
     "react-native",
     "typescript",
