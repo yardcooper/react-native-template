@@ -1,10 +1,11 @@
 {
-  "name": "template-script",
+  "name": "react-native-template-script",
   "version": "0.0.1",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "files": [
     "template",
-    "template.config.js"
+    "template.config.js",
+    "postInitScript.js"
   ],
   "keywords": [
     "react-native",
