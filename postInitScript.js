@@ -4,7 +4,6 @@ const ora = require("ora");
 const { execSync } = require("child_process");
 
 const spinner = ora("Executing post init script ");
-execSync(`bundle install`);
 
 new Promise((resolve) => {
   spinner.start();
