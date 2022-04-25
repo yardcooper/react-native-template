@@ -1,6 +1,7 @@
 {
   "name": "react-native-template",
   "version": "1.0.0",
+  "type": "module",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "license": "MIT",
   "files": [

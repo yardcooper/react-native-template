@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-const ora = require("ora");
-const { execSync } = require("child_process");
+// To handle CLI commands)
+// const { execSync } = require("child_process";
+
+import ora from "ora";
 
 const spinner = ora("Executing post init script ");
 
