@@ -2,8 +2,7 @@
 
 // To handle CLI commands)
 // const { execSync } = require("child_process";
-
-import ora from "ora";
+const ora = require("ora");
 
 const spinner = ora("Executing post init script ");
 
