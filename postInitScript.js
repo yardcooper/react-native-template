@@ -5,5 +5,6 @@ const { execSync } = require("child_process");
 // Install Fastlane iOS
 const projectPath = process.cwd();
 execSync(`cd "${projectPath}/ios"`);
-execSync(`bundle install"`);
+execSync(`bundle install`);
+
 console.log('Script complete')
