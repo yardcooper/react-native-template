@@ -15,8 +15,5 @@
     "jest",
     "template",
     "boilerplate"
-  ],
-  "dependencies": {
-    "ora": "^6.1.0"
-  }
+  ]
 }
