@@ -1,0 +1,59 @@
+image: node:16
+
+test:
+  stage: test
+  script:
+    - npm ci --ignore-scripts
+    - npm run lint
+    - npm test
+
+.deploy:
+  stage: deploy
+  before_script:
+    - export LC_ALL=en_US.UTF-8 # required by fastlane
+    - export LANG=en_US.UTF-8
+    - 'export ARTIFACTS_NAME=${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-$(echo $CI_JOB_NAME | tr -s : -)'
+  artifacts:
+    # gitlab runner cannot expand sub commands so we have to redefine the artifacts name
+    name: '${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-${CI_JOB_NAME}'
+    paths:
+      - '*.ipa'
+      - '*.app'
+      - '*.apk'
+      - '*.aab'
+      - '*.exe'
+    expire_in: 1 week
+  when: manual
+
+.deploy_android:
+  extends: .deploy
+  image: hybridheroes/android-ci:2
+  tags:
+    - docker
+
+.deploy_ios:
+  extends: .deploy
+  tags:
+    - xcode13
+
+deploy:ios:release:
+  extends: .deploy_ios
+  script:
+    - npm ci
+    - cd ios
+    - bundle install
+    - bundle exec fastlane build_release
+    - mv app-store/myapp.ipa "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}-app-store.ipa"
+    - mv ad-hoc/myapp.ipa "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}-ad-hoc.ipa"
+    - touch "${CI_PROJECT_DIR}/success"
+
+deploy:android:release:
+  extends: .deploy_android
+  script:
+    - npm ci --ignore-scripts
+    - npx jetify
+    - cd android
+    - bundle install
+    - bundle exec fastlane build_production keystore_password:${KEYSTORE_PASSWORD}
+    - mv app/build/outputs/apk/release/app-release.apk "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}.apk"
+    - touch "${CI_PROJECT_DIR}/success"
