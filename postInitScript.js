@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { execSync, spawnSync } = require("child_process");
+const { execSync,  } = require("child_process");
 
-// initialise empty git repo for Husky to work
+// Install Fastlane iOS
 const projectPath = process.cwd();
-execSync(`git init "${projectPath}"`);
+execSync(`cd ios bundle install"`);
 console.log('Script complete')
