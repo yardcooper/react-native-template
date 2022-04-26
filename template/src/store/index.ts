@@ -18,7 +18,7 @@ import slice from './sliceExample';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['settings'],
+  blacklist: ['slice'],
 };
 
 const rootReducer = combineReducers({
