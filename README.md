@@ -8,6 +8,7 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
 
 - Extended ESLint & Prettier configuration.
 - Basic React Navigation configuration.
+- `.nvmrc` for the usage of NVM
 
 ## :arrow_forward: Usage
 ```sh
