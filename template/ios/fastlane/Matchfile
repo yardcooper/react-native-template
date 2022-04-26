@@ -1,10 +1,12 @@
 git_url("git@gitlab.com:hybridheroes/match.git")
+# Template TODO: Add match repo branch.
 git_branch("")
 
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
+# Template TODO: Add add identifier.
 app_identifier("")
 # username("user@fastlane.tools") # Your Apple Developer Portal username
 
