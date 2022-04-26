@@ -5,7 +5,7 @@ module.exports = {
     return new Promise((resolve) => {
       console.log(
         '\033[2A',
-        `${chalk.green('✔')} Template initialization successful! 🚀`
+        `\n${chalk.green('✔')} Template initialization successful! 🚀`
       );
       resolve();
     }).catch(() => {
