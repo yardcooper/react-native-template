@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { AppStackParamList } from '../AppNavigator';
