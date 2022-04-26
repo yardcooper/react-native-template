@@ -1,5 +1,5 @@
-git_url("git@gitlab.com:hybridheroes/match.git")
-# Template TODO: Add match repo branch.
+# Template TODO: Add match repo + branch.
+git_url("")
 git_branch("")
 
 storage_mode("git")
