@@ -1,7 +1,9 @@
+const chalk = require('chalk');
+
 module.exports = {
   async success() {
     return new Promise((resolve) => {
-      console.log("\n✔ Template initialization successful! 🚀");
+      console.log(`\n${chalk.green('✔')} Template initialization successful! 🚀`);
       resolve();
     })
       .catch(() => {
