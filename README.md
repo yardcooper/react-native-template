@@ -8,6 +8,10 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
 
 - Extended ESLint & Prettier configuration.
 - Basic React Navigation configuration.
+- Basic Redux configuration:
+  - Redux Toolkit
+  - React Redux
+  - Redux Persist 
 
 ## :arrow_forward: Usage
 ```sh
