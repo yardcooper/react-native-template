@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+const { rm } = require('fs').promises;
 const { success } = require("./template/scripts/printSuccess");
 
-success();
+success().then(() => {
+  await rm('./scripts', { recursive: true });
+})
