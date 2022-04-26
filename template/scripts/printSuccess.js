@@ -1,7 +1,7 @@
 module.exports = {
   async success() {
     return new Promise((resolve) => {
-      console.log("\nTemplate initialization successful! 🚀");
+      console.log("\n✔ Template initialization successful! 🚀");
       resolve();
     })
       .catch(() => {

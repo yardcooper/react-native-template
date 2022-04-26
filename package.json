@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "author": "Hybrid Heroes",
-  "homepage": "https://gitlab.com/hybridheroes/opensource/react-native-template/-/blob/main/README.md",
   "license": "MIT",
+  "homepage": "https://gitlab.com/hybridheroes/opensource/react-native-template/-/blob/main/README.md",
+  "bugs": {
+    "url": "https://gitlab.com/hybridheroes/opensource/react-native-template/issues"
+  },
   "main": "postInitScript.js",
   "files": [
     "template",
