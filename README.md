@@ -14,10 +14,10 @@
 - tbd.
 
 ## :arrow_forward: Usage
-
 ```sh
-npx react-native init MyApp --template https://gitlab.com/hybridheroes/opensource/react-native-template
+npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
+Note: Remove --npm if yarn is preferred.
 
 ## :warning: React Native CLI
 
