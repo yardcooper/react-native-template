@@ -1,7 +1,13 @@
+const ora = require('ora');
+
+const spinner = ora('Executing post init script ');
+
 module.exports = {
   async success() {
     return new Promise(async (resolve) => {
-      console.log("\nTemplate initialization successful ! 🚀\n");
+      spinner.start();
+      console.log("\nTemplate initialization successful! 🚀");
+      spinner.succeed();
       resolve();
     });
   },
