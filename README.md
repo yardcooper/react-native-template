@@ -1,4 +1,4 @@
-# :space_invader: React Native Template TypeScript | Customized
+# :space_invader: Hybrid Heroes React Native Template
 
 > An extended Template based on the [clean and minimalist React Native template](https://img.shields.io/github/issues/react-native-community/react-native-template-typescript).
 
