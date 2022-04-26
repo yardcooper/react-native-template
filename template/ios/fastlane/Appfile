@@ -1,0 +1,16 @@
+# Template TODO: Add Appfile details.
+app_identifier ""
+apple_id ""
+team_id ""
+
+# To add lane-specific details
+# for_platform :ios do
+#   for_lane :build_test do
+#     app_identifier ""
+#     apple_id ""
+#     team_id ""
+#   end
+# end
+
+# For more information about the Appfile, see:
+# https://docs.fastlane.tools/advanced/#appfile

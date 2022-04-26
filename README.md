@@ -1,23 +1,19 @@
 # :space_invader: Hybrid Heroes React Native Template
 
-> An extended Template based on the [clean and minimalist React Native template](https://img.shields.io/github/issues/react-native-community/react-native-template-typescript).
+An extended Template based on the [clean and minimalist React Native TypeScript template](https://img.shields.io/github/issues/react-native-community/react-native-template-typescript).
 
-## :star: Base Features
+Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli).
 
-- Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
-- Consistent with the default React Native template
-- Minimal additional dependencies
+## :star: Extended features
 
-## :star: extended/customized Features
-
-- extended ESLint & Prettier Configuration
-- tbd.
+- Extended ESLint & Prettier configuration.
+- Basic React Navigation configuration.
 
 ## :arrow_forward: Usage
-
 ```sh
-npx react-native init MyApp --template https://gitlab.com/hybridheroes/opensource/react-native-template
+npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
+**Note:** Remove `--npm` if yarn is preferred.
 
 ## :warning: React Native CLI
 

@@ -1,0 +1,101 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  before_all do 
+    # Handle the keychain in a non-invasive way, inspired by setup_ci.
+    # (but without setting the temp keychain as default)
+    # https://github.com/fastlane/fastlane/blob/3f134ee01eac331daf92b31653f3f08651d0f04c/fastlane/lib/fastlane/actions/setup_ci.rb#L26
+    unless is_ci 
+      UI.message("Not running on CI, skipping CI setup")
+      next 
+    end 
+
+    keychain_name = "fastlane_tmp_keychain"
+    ENV["MATCH_KEYCHAIN_NAME"] = keychain_name
+    ENV["MATCH_KEYCHAIN_PASSWORD"] = ""
+
+    # Add keychains fresh to avoid collection of various certificates for multiple users each build.
+    UI.message("Creating temporary keychain: \"#{keychain_name}\".")
+    create_keychain(
+      name: keychain_name,
+      default_keychain: false,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: "",
+      add_to_search_list: true
+    )
+
+    UI.message("Enabling match readonly mode.")
+    ENV["MATCH_READONLY"] = true.to_s
+  end
+  
+  after_all do 
+    unless is_ci
+      next
+    end
+
+    UI.message("Deleting temporary keychain: \"#{ENV["MATCH_KEYCHAIN_NAME"]}\".")
+    delete_keychain(name: ENV["MATCH_KEYCHAIN_NAME"])
+  end 
+
+  lane :build_release do
+    archive
+    export_adhoc
+    export_appstore
+  end
+
+  lane :archive do 
+    match(type: "development")
+    build_ios_app(
+      # Template TODO: Add scheme.
+      scheme: "",
+      skip_package_ipa: true,
+      # Template TODO: Add archive path.
+      archive_path: "./.xcarchive",
+      silent: true
+    )
+  end
+
+  lane :export_adhoc do
+    match(type: "adhoc")
+    build_ios_app(
+      export_method: "ad-hoc",
+      skip_build_archive: true,
+      # Template TODO: Add archive path.
+      archive_path: "./.xcarchive",
+      output_directory: "./ad-hoc",
+      include_bitcode: false,
+      include_symbols: false,
+      silent: true
+    )
+  end
+  
+  lane :export_appstore do
+    match(type: "appstore")
+    build_ios_app(
+      export_method: "app-store",
+      skip_build_archive: true,
+      # Template TODO: Add archive path.
+      archive_path: "./.xcarchive",
+      output_directory: "./app-store",
+      silent: true
+    )
+  end
+end

@@ -1,4 +1,6 @@
 module.exports = {
-  placeholderName: 'HelloWorld',
+  placeholderName: 'MyProject',
   templateDir: './template',
-}
+  titlePlaceholder: 'Template App',
+  postInitScript: './postInitScript.js'
+};
