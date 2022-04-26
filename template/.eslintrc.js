@@ -18,6 +18,11 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     'react-hooks/exhaustive-deps': 'warn',
+    // https://redux-toolkit.js.org/usage/immer-reducers#linting-state-mutations
+    'no-param-reassign': [
+      'error',
+      { props: true, ignorePropertyModificationsFor: ['state'] },
+    ],
   },
   settings: {
     react: {
