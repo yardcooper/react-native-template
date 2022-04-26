@@ -7,12 +7,12 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
 ## :star: Extended features
 
 - Extended ESLint & Prettier configuration.
-- `.nvmrc` for the usage of NVM
-- Basic React Navigation configuration.
-- Basic Redux configuration:
-  - Redux Toolkit
-  - React Redux
-  - Redux Persist 
+- [Node Version Manager](https://github.com/nvm-sh/nvm) configuration file: ([`.nvmrc`](template/.nvmrc))
+- [React Navigation](https://reactnavigation.org/) configuration.
+- [Redux](https://redux.js.org/) configuration:
+  - [Redux Toolkit](https://redux-toolkit.js.org/)
+  - [React Redux](https://react-redux.js.org/)
+  - [Redux Persist](https://github.com/rt2zz/redux-persist)
 
 ## :arrow_forward: Usage
 ```sh
