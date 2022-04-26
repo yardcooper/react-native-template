@@ -2,6 +2,9 @@
 const { rm } = require('fs').promises;
 const { success } = require("./template/scripts/printSuccess");
 
-success().then(() => {
-  await rm('./scripts', { recursive: true });
-})
+const script = async () => {
+  await success();
+  await rm('./template/scripts', { recursive: true });
+}
+
+script();
