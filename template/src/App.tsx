@@ -1,13 +1,17 @@
-import React from "react";
-import { StatusBar } from "react-native";
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { Provider as StoreProvider } from 'react-redux';
 
-import AppNavigator from "./AppNavigator";
+import AppNavigator from './AppNavigator';
+import { store } from './store';
 
 const App = () => {
   return (
     <>
       <StatusBar />
-      <AppNavigator />
+      <StoreProvider store={store}>
+        <AppNavigator />
+      </StoreProvider>
     </>
   );
 };
