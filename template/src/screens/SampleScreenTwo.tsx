@@ -1,11 +1,11 @@
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import React, { FunctionComponent, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import React, { FunctionComponent, useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AppStackParamList } from "../AppNavigator";
+import { AppStackParamList } from '../AppNavigator';
 
-type Navigation = StackNavigationProp<AppStackParamList, "SampleTwo">;
+type Navigation = StackNavigationProp<AppStackParamList, 'SampleTwo'>;
 
 const SampleScreenTwo: FunctionComponent = () => {
   const navigation = useNavigation<Navigation>();
@@ -13,7 +13,7 @@ const SampleScreenTwo: FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <Text>Sample Screen 2</Text>
-      <Pressable onPress={() => navigation.navigate("SampleOne")}>
+      <Pressable onPress={() => navigation.navigate('SampleOne')}>
         <Text>go to 1</Text>
       </Pressable>
     </View>
@@ -22,8 +22,8 @@ const SampleScreenTwo: FunctionComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
   },
 });
