@@ -22,6 +22,7 @@ platform :android do
       properties: {
         "android.injected.signing.store.file" => File.join(Dir.pwd, "../app", "keystore"),
         "android.injected.signing.store.password" => options[:keystore_password],
+        # Template TODO: Add alias.
         "android.injected.signing.key.alias" => "",
         "android.injected.signing.key.password" => options[:keystore_password]
       }

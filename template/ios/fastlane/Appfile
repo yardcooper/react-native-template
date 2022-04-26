@@ -1,6 +1,16 @@
+# Template TODO: Add Appfile details.
 app_identifier ""
 apple_id ""
 team_id ""
 
+# To add lane-specific details
+# for_platform :ios do
+#   for_lane :build_test do
+#     app_identifier "de.hybridheroes.rbb24"
+#     apple_id "team@id.hybridheroes.de"
+#     team_id "ET3PMQ3W7Q"
+#   end
+# end
+
 # For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile
+# https://docs.fastlane.tools/advanced/#appfile
