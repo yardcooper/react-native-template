@@ -8,6 +8,7 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
 
 - Extended ESLint & Prettier configuration.
 - Basic React Navigation configuration.
+- `.nvmrc` for the usage of NVM
 
 ## :arrow_forward: Usage
 ```sh
@@ -22,6 +23,12 @@ This template only works with the new CLI. Make sure you have uninstalled the le
 If you tried the above and still get the react-native-template-react- native-template-typescript: Not found error, please try adding the `--ignore-existing` flag to [force npx to ignore](https://github.com/npm/npx#description) any locally installed versions of the CLI and use the latest.
 
 Further information can be found here: https://github.com/react-native-community/cli#about
+
+# Documentation
+
+## RVM & NVM
+The Template comes with a `.nvmrc` (currently node 16) so you can use `nvm use` bash command.
+You can also use `rvm use` bash command. The Ruby version is defined in the `Gemfile` (currently version 2.7.4)
 
 ## :computer: Contributing
 
