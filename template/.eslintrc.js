@@ -1,5 +1,5 @@
 module.exports = {
-  extends: '@react-native-community',
+  extends: ['universe/native', '@react-native-community'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
