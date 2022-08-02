@@ -71,16 +71,5 @@
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js"
     ]
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
