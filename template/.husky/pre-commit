@@ -3,3 +3,4 @@
 
 tsc
 npx lint-staged
+npm run ts-check
