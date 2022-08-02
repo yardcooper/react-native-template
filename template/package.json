@@ -10,6 +10,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "ts-check": "tsc",
     "format": "prettier --write \"**/*.{ts,tsx,js,json}\"",
     "postinstall": "cd ios && pod install",
     "prepare": "husky install"
@@ -30,6 +31,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@react-native-community/eslint-config": "^2.0.0",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^26.0.23",
@@ -67,12 +70,6 @@
     ],
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js"
-    ]
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
     ]
   }
 }
