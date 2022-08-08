@@ -18,6 +18,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     'react-hooks/exhaustive-deps': 'warn',
+    'spaced-comment': ['error', 'always', { exceptions: ['-', '+'] }],
     // https://redux-toolkit.js.org/usage/immer-reducers#linting-state-mutations
     'no-param-reassign': [
       'error',
