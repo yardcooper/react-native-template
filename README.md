@@ -18,10 +18,37 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
   - [Redux Persist](https://github.com/rt2zz/redux-persist)
 
 ## :arrow_forward: Usage
+
 ```sh
 npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
 **Note:** Remove `--npm` if yarn is preferred.
+
+### Usage with older versions of React Native
+
+#### e.g. `react-native@0.69.x`
+
+```sh
+npx react-native init MyApp --template react-native-template-typescript@6.11.9
+```
+
+See the below table to find out which version of the template to use.
+
+#### React Native <=> Template Version
+
+| React Native | Template |
+| ------------ | -------- |
+| 0.70         | 6.12.\*  |
+| 0.69         | 6.11.\*  |
+| 0.68         | 6.10.\*  |
+| 0.67         | 6.9.\*   |
+| 0.66         | 6.8.\*   |
+| 0.65         | 6.7.\*   |
+| 0.64         | 6.6.\*   |
+| 0.63         | 6.5.\*   |
+| 0.62         | 6.4.\*   |
+| 0.61         | 6.3.\*   |
+| 0.60         | 6.2.\*   |
 
 ## :warning: React Native CLI
 
