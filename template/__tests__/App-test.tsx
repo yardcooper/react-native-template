@@ -7,7 +7,7 @@ import App from '../src/App';
 
 jest.useFakeTimers();
 
-// We use 'create' and 'act' to avoid fail cases in certain asynchronous libraries
+// We await 'create' and 'act' to avoid fail cases in certain asynchronous libraries
 it('renders correctly', async () => {
   const render = create(<App />);
   await act(async () => {
