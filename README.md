@@ -50,6 +50,25 @@ See the below table to find out which version of the template to use.
 | 0.61         | 6.3.\*   |
 | 0.60         | 6.2.\*   |
 
+## Project structure
+
+```
+project/
+├── src/
+│   ├── screens/
+│   ├── store/
+│   └── App.tsx
+│   └── AppNavigator.tsx
+├── index.js
+└── package.json
+
+```
+
+```sh
+npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
+```
+**Note:** Remove `--npm` if yarn is preferred.
+
 ## :warning: React Native CLI
 
 This template only works with the new CLI. Make sure you have uninstalled the legacy `react-native-cli` first (`npm uninstall -g react-native-cli`) for the below command to work. If you wish to not use `npx`, you can also install the new CLI globally (`npm i -g @react-native-community/cli` or `yarn global add @react-native-community/cli`).
