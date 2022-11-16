@@ -50,20 +50,6 @@ See the below table to find out which version of the template to use.
 | 0.61         | 6.3.\*   |
 | 0.60         | 6.2.\*   |
 
-## Project structure
-
-```
-project/
-├── src/
-│   ├── screens/
-│   ├── store/
-│   └── App.tsx
-│   └── AppNavigator.tsx
-├── index.js
-└── package.json
-
-```
-
 ```sh
 npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
