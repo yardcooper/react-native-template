@@ -29,7 +29,7 @@ npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/ope
 #### e.g. `react-native@0.69.x`
 
 ```sh
-npx react-native init MyApp --template react-native-template-typescript@6.11.9
+npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template@6.11.9
 ```
 
 See the below table to find out which version of the template to use.
@@ -49,11 +49,6 @@ See the below table to find out which version of the template to use.
 | 0.62         | 6.4.\*   |
 | 0.61         | 6.3.\*   |
 | 0.60         | 6.2.\*   |
-
-```sh
-npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
-```
-**Note:** Remove `--npm` if yarn is preferred.
 
 ## :warning: React Native CLI
 
