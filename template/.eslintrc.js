@@ -10,6 +10,7 @@ module.exports = {
   rules: {
     complexity: ['error', 10],
     'no-shadow': 'off',
+    'no-undef': 'off', // This is handled by TypeScript
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-use-before-define': 0,
