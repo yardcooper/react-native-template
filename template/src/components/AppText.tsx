@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-type AppTextType = 'BodyLarge' | 'BodyMedium' | 'BodySmall';
+export type AppTextType = 'BodyLarge' | 'BodyMedium' | 'BodySmall';
 
 interface Props extends TextProps {
   type?: AppTextType;
