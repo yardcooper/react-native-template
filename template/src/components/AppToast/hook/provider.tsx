@@ -1,13 +1,16 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 
-import Toast, { Props } from '../toast-container';
+import ToastContainer, { ContainerProps } from '../toast-container';
 import ToastContext from './context';
 
-type PropsWithChildren = Props & {
+type PropsWithChildren = ContainerProps & {
   children: React.ReactNode;
 };
 
-const ToastProvider: FC<PropsWithChildren> = ({ children, ...props }) => {
+const ToastProvider: FunctionComponent<PropsWithChildren> = ({
+  children,
+  ...props
+}) => {
   const toastRef = useRef(null);
   const [refState, setRefState] = useState({});
 
@@ -18,7 +21,7 @@ const ToastProvider: FC<PropsWithChildren> = ({ children, ...props }) => {
   return (
     <ToastContext.Provider value={refState as any}>
       {children}
-      <Toast ref={toastRef} {...props} />
+      <ToastContainer ref={toastRef} {...props} />
     </ToastContext.Provider>
   );
 };

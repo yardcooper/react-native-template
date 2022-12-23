@@ -6,15 +6,14 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
-  Text,
   TouchableWithoutFeedback,
   PanResponder,
   PanResponderInstance,
   PanResponderGestureState,
   useWindowDimensions,
 } from 'react-native';
-import AppText, { AppTextType } from '../AppText';
 
+import AppText, { AppTextType } from '../AppText';
 import { ToastColors, ToastIcons, ToastType } from './variables';
 
 export interface ToastOptions {

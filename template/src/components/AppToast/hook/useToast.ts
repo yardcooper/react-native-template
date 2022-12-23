@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 
-import ToastContext, { ToastContextType } from './context';
+import { ReferenceToastContainer } from '../toast-container';
+import ToastContext from './context';
 
-const useToast = (): ToastContextType => useContext(ToastContext);
+const useToast = (): ReferenceToastContainer => useContext(ToastContext);
 
 export default useToast;
