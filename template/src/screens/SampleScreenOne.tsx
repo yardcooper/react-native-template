@@ -4,14 +4,18 @@ import React, { FunctionComponent } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { AppStackParamList } from '../AppNavigator';
-import { useToast } from '../components/AppToast';
-import { ToastType } from '../components/AppToast/variables';
+import { ToastType } from '../components/AppToast/types';
+import useToast from '../hooks/useToast';
 
 type Navigation = StackNavigationProp<AppStackParamList, 'SampleOne'>;
 
 const SampleScreenOne: FunctionComponent = () => {
   const navigation = useNavigation<Navigation>();
   const toast = useToast();
+
+  const showToast = () => {
+    toast.show('Here is an example toast', { type: ToastType.DEFAULT });
+  };
 
   return (
     <View style={styles.container}>
@@ -20,9 +24,7 @@ const SampleScreenOne: FunctionComponent = () => {
         <Text>go to 2</Text>
       </Pressable>
 
-      <Pressable
-        onPress={() => toast.show('TEST', { type: ToastType.DEFAULT })}
-      >
+      <Pressable onPress={showToast}>
         <Text>Test Toast</Text>
       </Pressable>
     </View>
