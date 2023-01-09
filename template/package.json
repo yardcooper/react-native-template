@@ -13,7 +13,7 @@
     "ts-check": "tsc",
     "format": "prettier --write \"**/*.{ts,tsx,js,json}\"",
     "postinstall": "cd ios && pod install",
-    "extract-loc": "formatjs extract 'src/**/!(*.d).{ts,tsx,js,jsx}' --out-file './src/intl/translations/de.json' --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "extract-loc": "formatjs extract 'src/**/!(*.d).{ts,tsx,js,jsx}' --out-file './src/intl/translations/en.json' --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "compile-loc": "formatjs compile-folder ./src/intl/translations ./src/intl/locales",
     "prepare": "husky install"
   },

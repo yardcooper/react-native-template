@@ -1,4 +1,3 @@
-import { locale } from 'expo-localization';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { StatusBar } from 'react-native';
@@ -14,10 +13,11 @@ const App = () => {
     <>
       <StatusBar />
       <StoreProvider store={store}>
+        {/* TODO: get locale from a custom store if necessary */}
         <IntlProvider
-          messages={getCurrentTranslation(locale.slice(0, 2))}
-          defaultLocale="de"
-          locale={locale.slice(0, 2)}
+          messages={getCurrentTranslation('en')}
+          defaultLocale="en"
+          locale="en"
         >
           <SafeAreaProvider>
             <AppNavigator />
