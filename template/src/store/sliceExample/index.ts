@@ -19,6 +19,6 @@ const slice = createSlice({
 
 export const { setToken } = slice.actions;
 
-export const selectToken = (root: RootState) => root.slice.token;
+export const selectToken = (state: RootState) => state.slice.token;
 
 export default slice.reducer;

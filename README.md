@@ -7,8 +7,9 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
 ## :star: Extended features
 
 - Extended ESLint & Prettier configuration.
-- Added [Husky](https://typicode.github.io/husky) pre commit setup
-  - lint-staged
+- [Husky](https://typicode.github.io/husky) pre-commit setup
+  - [lint-staged](https://github.com/okonet/lint-staged)
+  - [commitlint](https://github.com/conventional-changelog/commitlint)
 - [Node Version Manager](https://github.com/nvm-sh/nvm) configuration file: ([`.nvmrc`](template/.nvmrc))
 - [React Navigation](https://reactnavigation.org/) configuration.
 - [Redux](https://redux.js.org/) configuration:
@@ -17,6 +18,7 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
   - [Redux Persist](https://github.com/rt2zz/redux-persist)
 
 ## :arrow_forward: Usage
+
 ```sh
 npx react-native init MyApp --npm --template https://gitlab.com/hybridheroes/opensource/react-native-template
 ```
