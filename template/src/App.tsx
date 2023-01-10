@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
 
 import AppNavigator from './AppNavigator';
+import { ToastProvider } from './hooks/useToast';
 import { store } from './store';
 
 const App = () => {
@@ -10,7 +11,9 @@ const App = () => {
     <>
       <StatusBar />
       <StoreProvider store={store}>
-        <AppNavigator />
+        <ToastProvider>
+          <AppNavigator />
+        </ToastProvider>
       </StoreProvider>
     </>
   );
