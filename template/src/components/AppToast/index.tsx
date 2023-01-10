@@ -11,8 +11,9 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
+import { ToastOptions } from '../../hooks/useToast/types';
 import AppText from '../AppText';
-import { ToastColors, ToastIcons, ToastOptions, ToastType } from './types';
+import { ToastColors, ToastIcons, ToastType } from './types';
 
 export interface ToastProps extends ToastOptions {
   id: string;
