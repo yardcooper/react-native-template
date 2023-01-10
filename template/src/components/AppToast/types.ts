@@ -1,7 +1,3 @@
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-
-import { AppTextType } from '../AppText';
-
 export enum ToastType {
   DEFAULT = 'default',
   SUCCESS = 'success',
