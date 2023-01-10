@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import Toast, { ToastProps } from '.';
+import Toast, { ToastProps } from '../../components/AppToast';
 import { ToastOptions } from './types';
 
 const { height, width } = Dimensions.get('window');
@@ -125,7 +125,7 @@ const ToastContainer = forwardRef<ReferenceToastContainer, ContainerProps>(
           pointerEvents="box-none"
         >
           {toasts
-            .filter((t) => !t.placement || t.placement === 'bottom')
+            .filter((toast) => !toast.placement || toast.placement === 'bottom')
             .map((toast) => (
               <Toast key={toast.id} {...toast} />
             ))}

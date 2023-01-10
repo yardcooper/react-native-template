@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { ToastContext } from '.';
 import ToastContainer, {
   ContainerProps,
-} from '../../components/AppToast/ToastContainer';
+} from './ToastContainer';
 
 type PropsWithChildren = ContainerProps & {
   children: React.ReactNode;

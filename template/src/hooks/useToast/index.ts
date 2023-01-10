@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { ReferenceToastContainer } from '../../components/AppToast/ToastContainer';
+import { ReferenceToastContainer } from './ToastContainer';
 export { default as ToastProvider } from './provider';
 
 export const ToastContext = React.createContext({} as ReferenceToastContainer);
