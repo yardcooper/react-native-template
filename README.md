@@ -16,6 +16,7 @@ Elegant usage directly within the [React Native CLI](https://github.com/react-na
   - [Redux Toolkit](https://redux-toolkit.js.org/)
   - [React Redux](https://react-redux.js.org/)
   - [Redux Persist](https://github.com/rt2zz/redux-persist)
+- [React Intl / Format.JS](https://formatjs.io/docs/react-intl/)
 
 ## :arrow_forward: Usage
 
