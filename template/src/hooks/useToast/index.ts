@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { ReferenceToastContainer } from './ToastContainer';
-export { default as ToastProvider } from './provider';
+export { default as ToastProvider } from './ToastProvider';
 
 export const ToastContext = React.createContext({} as ReferenceToastContainer);
 
