@@ -3,3 +3,5 @@
 
 npx lint-staged
 npm run ts-check
+npm run extract-loc
+npm run compile-loc
