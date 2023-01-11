@@ -11,17 +11,8 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import { ToastOptions } from '../../hooks/useToast/types';
 import AppText from '../AppText';
-import { ToastColors, ToastIcons, ToastType } from './types';
-
-export interface ToastProps extends ToastOptions {
-  id: string;
-  onDestroy(): void;
-  message: string | JSX.Element;
-  open: boolean;
-  onHide(): void;
-}
+import { ToastColors, ToastIcons, ToastProps, ToastType } from './types';
 
 const Toast: FunctionComponent<ToastProps> = ({
   id,

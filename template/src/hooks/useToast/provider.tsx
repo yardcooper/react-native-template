@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 
 import { ToastContext } from '.';
-import ToastContainer, {
-  ContainerProps,
-} from './ToastContainer';
+import ToastContainer, { ContainerProps } from './ToastContainer';
 
 type PropsWithChildren = ContainerProps & {
   children: React.ReactNode;
