@@ -28,11 +28,11 @@ const SampleScreenOne: FunctionComponent = () => {
         />
       </AppText>
       <Pressable onPress={() => navigation.navigate('SampleTwo')}>
-        <Text>go to 2</Text>
+        <Text>Go to screen 2</Text>
       </Pressable>
 
       <Pressable onPress={showToast}>
-        <Text>Test Toast</Text>
+        <Text>Test toast</Text>
       </Pressable>
     </View>
   );
