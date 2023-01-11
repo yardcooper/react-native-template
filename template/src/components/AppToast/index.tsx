@@ -100,7 +100,7 @@ const Toast: FunctionComponent<ToastProps> = ({
     }
     panResponderRef.current = PanResponder.create({
       onMoveShouldSetPanResponder: (_, gestureState) => {
-        // return true if user is swiping, return false if it's a single click
+        // Returns true if a gesture has started
         return !(gestureState.dx === 0 && gestureState.dy === 0);
       },
       onPanResponderMove: (_, gestureState) => {
