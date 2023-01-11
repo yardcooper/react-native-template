@@ -8,16 +8,19 @@ import AppNavigator from './AppNavigator';
 import { getCurrentTranslation } from './intl';
 import { store } from './store';
 
-const App = () => {
+const AppBody = () => {
+  // Here you can supply the current and default language used for translation.
+  // This can come from a store value or a library implementation such as expo-localization
+  const language = 'en';
+
   return (
     <>
       <StatusBar />
       <StoreProvider store={store}>
-        {/* TODO: get locale from a custom store if necessary */}
         <IntlProvider
-          messages={getCurrentTranslation('en')}
+          messages={getCurrentTranslation(language)}
           defaultLocale="en"
-          locale="en"
+          locale={language}
         >
           <SafeAreaProvider>
             <AppNavigator />
@@ -27,5 +30,11 @@ const App = () => {
     </>
   );
 };
+
+const App = () => (
+  <StoreProvider store={store}>
+    <AppBody />
+  </StoreProvider>
+);
 
 export default App;
