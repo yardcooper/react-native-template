@@ -17,6 +17,12 @@
 - Simulator: `npm run android`
 - Device: `npm run android:device`
 
+#### Localization
+- extract & compile runs on commit
+- manual steps
+    - `npm run extract-loc`
+    - `npm run compile-loc`
+
 ---
 
 ## Project structure
@@ -30,6 +36,7 @@ project/
 ├── src/
 │   ├── components/    # Shared components
 │   │   └── AppText    # Generic text component
+│   ├── intl/          # localization files
 │   ├── screens/
 │   ├── store/
 │   └── App.tsx

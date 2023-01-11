@@ -6,7 +6,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'formatjs'],
   rules: {
     complexity: ['error', 10],
     'no-shadow': 'off',
