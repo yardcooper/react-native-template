@@ -139,7 +139,7 @@ const Toast: FunctionComponent<ToastProps> = ({
       {
         translateY: animation.interpolate({
           inputRange: [0, 1],
-          outputRange: placement === 'bottom' ? [20, 0] : [-20, 0], // 0 : 150, 0.5 : 75, 1 : 0
+          outputRange: placement === 'bottom' ? [20, 0] : [-20, 0],
         }),
       },
     ],
