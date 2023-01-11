@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
 
 import AppNavigator from './AppNavigator';
-import { ToastProvider } from './components/AppToast';
+import { ToastProvider } from './hooks/useToast';
 import { store } from './store';
 
 const App = () => {

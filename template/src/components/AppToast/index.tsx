@@ -3,9 +3,7 @@ import {
   View,
   StyleSheet,
   Animated,
-  StyleProp,
   ViewStyle,
-  TextStyle,
   TouchableWithoutFeedback,
   PanResponder,
   PanResponderInstance,
@@ -13,85 +11,8 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import AppText, { AppTextType } from '../AppText';
-import { ToastColors, ToastIcons, ToastType } from './variables';
-
-export interface ToastOptions {
-  /**
-   * Id is optional, you may provide an id only if you want to update toast later using toast.update()
-   */
-  id?: string;
-
-  /**
-   * Customize toast icon, overrides type icon
-   */
-  customIcon?: JSX.Element;
-
-  /**
-   * Toast types
-   */
-  type?: ToastType;
-
-  /**
-   * In ms, How long toast will stay before it go away in ms (default 3s)
-   */
-  duration?: number;
-
-  /**
-   * Customize when toast should be placed
-   */
-  placement?: 'top' | 'bottom' | 'center';
-
-  /**
-   * Customize style of toast
-   */
-  style?: StyleProp<ViewStyle>;
-
-  /**
-   * Customize app text type, default is used from AppText
-   */
-  textType?: AppTextType;
-
-  /**
-   * Customize style of toast text
-   */
-  textStyle?: StyleProp<TextStyle>;
-
-  /**
-   * Customize how fast toast will show and hide in ms (default 250ms)
-   */
-  animationDuration?: number;
-
-  /**
-   * Customize how toast is animated when added or removed
-   */
-  animationType?: 'slide-in' | 'zoom-in';
-
-  /**
-   * Register event for when toast is pressed. If you're using a custom toast you have to pass this to a Touchable.
-   */
-  onPress?(id: string): void;
-
-  /**
-   * Execute event after toast is closed
-   */
-  onClose?(): void;
-
-  /**
-   * Payload data for custom toasts. You can pass whatever you want
-   */
-  data?: any;
-
-  swipeEnabled?: boolean;
-}
-
-export interface ToastProps extends ToastOptions {
-  id: string;
-  onDestroy(): void;
-  message: string | JSX.Element;
-  open: boolean;
-  onHide(): void;
-}
+import AppText from '../AppText';
+import { ToastProps, ToastType } from './types';
 
 const Toast: FunctionComponent<ToastProps> = ({
   id,
@@ -117,8 +38,8 @@ const Toast: FunctionComponent<ToastProps> = ({
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const dims = useWindowDimensions();
 
-  const { backgroundColor, textColor, borderColor } = ToastColors[type];
-  const icon = customIcon || ToastIcons[type];
+  const { backgroundColor, textColor, borderColor } = toastColors[type];
+  const icon = customIcon || toastIcons[type];
 
   useEffect(() => {
     Animated.timing(animation, {
@@ -179,7 +100,7 @@ const Toast: FunctionComponent<ToastProps> = ({
     }
     panResponderRef.current = PanResponder.create({
       onMoveShouldSetPanResponder: (_, gestureState) => {
-        // return true if user is swiping, return false if it's a single click
+        // Returns true if a gesture has started
         return !(gestureState.dx === 0 && gestureState.dy === 0);
       },
       onPanResponderMove: (_, gestureState) => {
@@ -218,7 +139,7 @@ const Toast: FunctionComponent<ToastProps> = ({
       {
         translateY: animation.interpolate({
           inputRange: [0, 1],
-          outputRange: placement === 'bottom' ? [20, 0] : [-20, 0], // 0 : 150, 0.5 : 75, 1 : 0
+          outputRange: placement === 'bottom' ? [20, 0] : [-20, 0],
         }),
       },
     ],
@@ -239,6 +160,12 @@ const Toast: FunctionComponent<ToastProps> = ({
     });
   }
 
+  const renderMessageText = () => (
+    <AppText type={textType} style={[{ color: textColor }, textStyle]}>
+      {message}
+    </AppText>
+  );
+
   return (
     <Animated.View
       ref={containerRef}
@@ -258,17 +185,38 @@ const Toast: FunctionComponent<ToastProps> = ({
           ]}
         >
           {icon && <View style={[styles.iconContainer]}>{icon}</View>}
-          {React.isValidElement(message) ? (
-            message
-          ) : (
-            <AppText type={textType} style={[{ color: textColor }, textStyle]}>
-              {message}
-            </AppText>
-          )}
+          {React.isValidElement(message) ? message : renderMessageText()}
         </View>
       </TouchableWithoutFeedback>
     </Animated.View>
   );
+};
+
+export const toastColors: Record<ToastType, ToastColorSet> = {
+  [ToastType.DEFAULT]: {
+    backgroundColor: '#333',
+    borderColor: '#d3d3d3',
+    textColor: 'white',
+  },
+  [ToastType.SUCCESS]: {
+    backgroundColor: 'rgb(46, 125, 50)',
+    textColor: 'white',
+  },
+  [ToastType.WARNING]: {
+    backgroundColor: 'rgb(237, 108, 2)',
+    textColor: 'white',
+  },
+  [ToastType.DANGER]: {
+    backgroundColor: 'rgb(211, 47, 47)',
+    textColor: 'white',
+  },
+};
+
+export const toastIcons: Record<ToastType, JSX.Element | undefined> = {
+  [ToastType.DEFAULT]: undefined,
+  [ToastType.SUCCESS]: undefined,
+  [ToastType.WARNING]: undefined,
+  [ToastType.DANGER]: undefined,
 };
 
 const styles = StyleSheet.create({
