@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import AppText from '../AppText';
-import { ToastColors, ToastIcons, ToastProps, ToastType } from './types';
+import { ToastProps, ToastType } from './types';
 
 const Toast: FunctionComponent<ToastProps> = ({
   id,
@@ -38,8 +38,8 @@ const Toast: FunctionComponent<ToastProps> = ({
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const dims = useWindowDimensions();
 
-  const { backgroundColor, textColor, borderColor } = ToastColors[type];
-  const icon = customIcon || ToastIcons[type];
+  const { backgroundColor, textColor, borderColor } = toastColors[type];
+  const icon = customIcon || toastIcons[type];
 
   useEffect(() => {
     Animated.timing(animation, {
@@ -190,6 +190,33 @@ const Toast: FunctionComponent<ToastProps> = ({
       </TouchableWithoutFeedback>
     </Animated.View>
   );
+};
+
+export const toastColors: Record<ToastType, ToastColorSet> = {
+  [ToastType.DEFAULT]: {
+    backgroundColor: '#333',
+    borderColor: '#d3d3d3',
+    textColor: 'white',
+  },
+  [ToastType.SUCCESS]: {
+    backgroundColor: 'rgb(46, 125, 50)',
+    textColor: 'white',
+  },
+  [ToastType.WARNING]: {
+    backgroundColor: 'rgb(237, 108, 2)',
+    textColor: 'white',
+  },
+  [ToastType.DANGER]: {
+    backgroundColor: 'rgb(211, 47, 47)',
+    textColor: 'white',
+  },
+};
+
+export const toastIcons: Record<ToastType, JSX.Element | undefined> = {
+  [ToastType.DEFAULT]: undefined,
+  [ToastType.SUCCESS]: undefined,
+  [ToastType.WARNING]: undefined,
+  [ToastType.DANGER]: undefined,
 };
 
 const styles = StyleSheet.create({
