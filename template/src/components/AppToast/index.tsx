@@ -10,9 +10,10 @@ import {
   PanResponderGestureState,
   useWindowDimensions,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import AppText from '../AppText';
-import { ToastProps, ToastType } from './types';
+import { ToastColorSet, ToastProps, ToastType } from './types';
 
 const Toast: FunctionComponent<ToastProps> = ({
   id,
@@ -37,6 +38,7 @@ const Toast: FunctionComponent<ToastProps> = ({
   const panResponderAnimRef = useRef<Animated.ValueXY>();
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const dims = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const { backgroundColor, textColor, borderColor } = toastColors[type];
   const icon = customIcon || toastIcons[type];
@@ -139,7 +141,7 @@ const Toast: FunctionComponent<ToastProps> = ({
       {
         translateY: animation.interpolate({
           inputRange: [0, 1],
-          outputRange: placement === 'bottom' ? [20, 0] : [-20, 0],
+          outputRange: placement === 'bottom' ? [20, 0] : [-20, insets.top],
         }),
       },
     ],

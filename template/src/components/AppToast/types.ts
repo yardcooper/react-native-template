@@ -15,7 +15,7 @@ export enum ToastType {
   DANGER = 'danger',
 }
 
-interface ToastColorSet {
+export interface ToastColorSet {
   backgroundColor: string;
   textColor: string;
   borderColor?: string;
