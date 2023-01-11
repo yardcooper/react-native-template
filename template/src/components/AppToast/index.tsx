@@ -160,6 +160,12 @@ const Toast: FunctionComponent<ToastProps> = ({
     });
   }
 
+  const renderMessageText = () => (
+    <AppText type={textType} style={[{ color: textColor }, textStyle]}>
+      {message}
+    </AppText>
+  );
+
   return (
     <Animated.View
       ref={containerRef}
@@ -179,13 +185,7 @@ const Toast: FunctionComponent<ToastProps> = ({
           ]}
         >
           {icon && <View style={[styles.iconContainer]}>{icon}</View>}
-          {React.isValidElement(message) ? (
-            message
-          ) : (
-            <AppText type={textType} style={[{ color: textColor }, textStyle]}>
-              {message}
-            </AppText>
-          )}
+          {React.isValidElement(message) ? message : renderMessageText()}
         </View>
       </TouchableWithoutFeedback>
     </Animated.View>
