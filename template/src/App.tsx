@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as StoreProvider } from 'react-redux';
 
 import AppNavigator from './AppNavigator';
+import { ToastProvider } from './hooks/useToast';
 import { getCurrentTranslation } from './intl';
 import { store } from './store';
 
@@ -23,7 +24,9 @@ const AppBody = () => {
           locale={language}
         >
           <SafeAreaProvider>
-            <AppNavigator />
+            <ToastProvider>
+              <AppNavigator />
+            </ToastProvider>
           </SafeAreaProvider>
         </IntlProvider>
       </StoreProvider>
