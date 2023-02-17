@@ -36,7 +36,7 @@ Further information can be found here: https://github.com/react-native-community
 # Documentation
 
 ## :gem: RVM & NVM
-The Template comes with a `.nvmrc` (currently node 16) so you can use `nvm use` bash command.
+The Template comes with a `.nvmrc` (currently node 18) so you can use `nvm use` bash command.
 You can also use `rvm use` bash command. The Ruby version is defined in the `Gemfile` (currently version 2.7.4)
 
 ## :computer: Contributing
