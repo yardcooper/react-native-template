@@ -1,27 +1,30 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { ToastContext } from '.';
 import ToastContainer, { ContainerProps } from './ToastContainer';
 
-type PropsWithChildren = ContainerProps & {
-  children: React.ReactNode;
+type Props = ContainerProps & {
+  children: ReactElement;
 };
 
-const ToastProvider: FunctionComponent<PropsWithChildren> = ({
-  children,
-  ...props
-}) => {
+const ToastProvider: FunctionComponent<Props> = ({ children }) => {
+  const [refState, setRefState] = useState(null);
   const toastRef = useRef(null);
-  const [refState, setRefState] = useState({});
 
   useEffect(() => {
-    setRefState(toastRef.current as any);
+    setRefState(toastRef.current);
   }, []);
 
   return (
-    <ToastContext.Provider value={refState as any}>
+    <ToastContext.Provider value={refState}>
       {children}
-      <ToastContainer ref={toastRef} {...props} />
+      <ToastContainer ref={toastRef} />
     </ToastContext.Provider>
   );
 };
