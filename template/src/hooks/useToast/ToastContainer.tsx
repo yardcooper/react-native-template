@@ -7,9 +7,9 @@ import {
   Dimensions,
 } from 'react-native';
 
+import { ToastOptions } from './types';
 import Toast from '../../components/AppToast';
 import { ToastProps } from '../../components/AppToast/types';
-import { ToastOptions } from './types';
 
 const { height, width } = Dimensions.get('window');
 
