@@ -3,11 +3,12 @@ import { IntlProvider } from 'react-intl';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as StoreProvider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AppNavigator from './AppNavigator';
 import { ToastProvider } from './hooks/useToast';
 import { getCurrentTranslation } from './intl';
-import { store } from './store';
+import { persistor, store } from './store';
 
 const AppBody = () => {
   // Here you can supply the current and default language used for translation.
@@ -25,7 +26,9 @@ const AppBody = () => {
         >
           <SafeAreaProvider>
             <ToastProvider>
-              <AppNavigator />
+              <PersistGate persistor={persistor}>
+                <AppNavigator />
+              </PersistGate>
             </ToastProvider>
           </SafeAreaProvider>
         </IntlProvider>
