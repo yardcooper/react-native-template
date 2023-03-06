@@ -1,0 +1,147 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - cd app
+    - npm ci --ignore-scripts
+    - npm run lint
+    - npm test
+
+.build_application:
+  stage: build
+  variables:
+    DOTENV: $APP_DOTENV
+  before_script:
+    - cd app
+    - npm ci
+    - export LC_ALL=en_US.UTF-8 # required by fastlane
+    - export LANG=en_US.UTF-8
+    - "export ARTIFACTS_NAME=${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-$(echo $CI_JOB_NAME | tr -s : -)"
+    - echo "$DOTENV" | tr -d '\r' > .env
+  artifacts:
+    # GitLab runner cannot expand sub commands so we have to redefine the artifacts name
+    name: "${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-${CI_JOB_NAME}"
+    paths:
+      - "*.ipa"
+      - "*.app"
+      - "*.apk"
+      - "*.aab"
+      - "*.exe"
+    expire_in: 1 week
+  when: manual
+
+.build_app:android:
+  extends: .build_application
+  image: hybridheroes/android-ci:latest
+  tags:
+    - docker
+  script:
+    - cd android
+    - bundle install
+    - bundle exec fastlane build_production keystore_password:${KEYSTORE_PASSWORD}
+    - mv app/build/outputs/apk/release/app-release.apk "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}.apk"
+    - touch "${CI_PROJECT_DIR}/success"
+
+build_app:android:test:
+  environment:
+    # This determines .env variables
+    name: app-test
+  extends: .build_app:android
+
+build_app:android:release:
+  environment:
+    # This determines .env variables
+    name: app-release
+  extends: .build_app:android
+
+.deploy_ios:
+  extends: .build_application
+  tags:
+    - xcode14
+
+build_app:ios:test:
+  extends: .deploy_ios
+  environment:
+    # This determines .env variables
+    name: app-test
+  script:
+    - cd ios
+    - pod install
+    - bundle install
+    - bundle exec fastlane build_test
+    - mv development/gyde.ipa "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}.ipa"
+    - touch "${CI_PROJECT_DIR}/success"
+
+# Currently unused. To be implemented when distribution method is confirmed
+#
+# build_app:ios:enterprise:
+#   extends: .deploy_ios
+#   environment:
+#     # This determines .env variables
+#     name: app-release
+#   script:
+#     - cd ios
+#     - pod install
+#     - bundle install
+#     - bundle exec fastlane build_enterprise
+#     - mv gyde.ipa "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}-enterprise.ipa"
+#     - touch "${CI_PROJECT_DIR}/success"
+
+.compose: &compose
+  stage: deploy
+  image: docker
+  services:
+    - docker:dind
+  before_script:
+    # compose V2 not yet available on linux https://docs.docker.com/compose/cli-command/#transitioning-to-ga-for-compose-v2
+    - apk add curl
+    - mkdir -p ~/.docker/cli-plugins/
+    - curl -SL https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+    - chmod +x ~/.docker/cli-plugins/docker-compose
+    # https://docs.gitlab.com/ee/ci/ssh_keys/#ssh-keys-when-using-the-docker-executor
+    - "command -v ssh-agent >/dev/null || ( apk --update add openssh-client )"
+    - eval $(ssh-agent -s)
+    - echo "${SSH_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config'
+  script:
+    - cd compose
+    - echo "$DOTENV" | tr -d '\r' > .env
+    - docker context import $DOCKER_CONTEXT_NAME $DOCKER_CONTEXT_FILE
+    # debug compose configuration
+    - docker --context $DOCKER_CONTEXT_NAME compose -p $DOCKER_CONTEXT_NAME -f docker-compose.yml -f docker-compose.websecure.yml pull
+    - docker --context $DOCKER_CONTEXT_NAME compose -p $DOCKER_CONTEXT_NAME -f docker-compose.yml -f docker-compose.websecure.yml build --no-cache
+    - docker --context $DOCKER_CONTEXT_NAME compose -p $DOCKER_CONTEXT_NAME -f docker-compose.yml -f docker-compose.websecure.yml up --force-recreate -d
+    - docker --context $DOCKER_CONTEXT_NAME system prune -f
+  after_script:
+    # delete ssh key manually
+    - ssh-add -D
+    - ../scripts/teams-hook.sh
+  when: manual
+
+CMS:staging:
+  extends: .compose
+  environment:
+    name: staging
+    url: https://staging.gyde.hybridheroes.io/
+  variables:
+    DOCKER_CONTEXT_FILE: "gyde-staging.dockercontext"
+    DOCKER_CONTEXT_NAME: "gyde-staging"
+    SSH_KEY: $STAGING_SSH_KEY
+    DOTENV: $STAGING_DOTENV
+
+CMS:production:
+  extends: .compose
+  environment:
+    name: production
+    url: https://production.gyde.hybridheroes.io/
+  variables:
+    DOCKER_CONTEXT_FILE: "gyde-production.dockercontext"
+    DOCKER_CONTEXT_NAME: "gyde-production"
+    SSH_KEY: $PRODUCTION_SSH_KEY
+    DOTENV: $PRODUCTION_DOTENV
