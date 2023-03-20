@@ -1,0 +1,74 @@
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  script:
+    - npm ci --ignore-scripts
+    - npm run lint
+    - npm test
+
+.build_application:
+  stage: build
+  variables:
+    DOTENV: $APP_DOTENV
+  before_script:
+    - npm ci --ignore-scripts
+    - export LC_ALL=en_US.UTF-8 # required by fastlane
+    - export LANG=en_US.UTF-8
+    - "export ARTIFACTS_NAME=${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-$(echo $CI_JOB_NAME | tr -s : -)"
+    - echo "$DOTENV" | tr -d '\r' > .env
+  artifacts:
+    # GitLab runner cannot expand sub commands so we have to redefine the artifacts name
+    name: "${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-${CI_JOB_NAME}"
+    paths:
+      - "*.ipa"
+      - "*.app"
+      - "*.apk"
+      - "*.aab"
+      - "*.exe"
+    expire_in: 1 week
+  when: manual
+
+.build_app:android:
+  extends: .build_application
+  image: hybridheroes/android-ci:latest
+  tags:
+    - docker
+  script:
+    - cd android
+    - bundle install
+    - bundle exec fastlane build_production keystore_password:${KEYSTORE_PASSWORD}
+    - mv app/build/outputs/apk/release/app-release.apk "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}.apk"
+    - touch "${CI_PROJECT_DIR}/success"
+
+build_app:android:test:
+  environment:
+    # This determines .env variables
+    name: app-test
+  extends: .build_app:android
+
+build_app:android:release:
+  environment:
+    # This determines .env variables
+    name: app-release
+  extends: .build_app:android
+
+.deploy_ios:
+  extends: .build_application
+  tags:
+    - xcode14
+
+build_app:ios:test:
+  extends: .deploy_ios
+  environment:
+    # This determines .env variables
+    name: app-test
+  script:
+    - cd ios
+    - bundle install
+    - pod install --repo-update
+    - bundle exec fastlane build_test
+    - mv development/HelloWorld.ipa "${CI_PROJECT_DIR}/${ARTIFACTS_NAME}.ipa"
+    - touch "${CI_PROJECT_DIR}/success"
