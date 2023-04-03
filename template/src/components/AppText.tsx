@@ -16,7 +16,7 @@ const AppText: FunctionComponent<Props> = ({
   const textStyle = type ? textStyles[type] : textStyles.BodyMedium;
 
   return (
-    <Text style={[textStyle, style]} {...props}>
+    <Text style={[textStyles.defaultStyle, textStyle, style]} {...props}>
       {children}
     </Text>
   );
@@ -29,18 +29,18 @@ export const textStyles = StyleSheet.create({
     fontSize: 19,
     lineHeight: 28,
     letterSpacing: 0.38, // 2%
-    color: 'black',
   },
   BodyMedium: {
     fontSize: 17,
     lineHeight: 24,
     letterSpacing: 0.34, // 2%
-    color: 'black',
   },
   BodySmall: {
     fontSize: 14,
     lineHeight: 20,
-    letterSpacing: 0.28, // 2%
+    letterSpacing: 0.28, // 2% 
+  },
+  defaultStyle: {
     color: 'black',
   },
 });
